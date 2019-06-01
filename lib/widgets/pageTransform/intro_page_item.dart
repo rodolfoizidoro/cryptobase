@@ -1,5 +1,5 @@
 import 'package:crypto_base/pages/datail/detail.dart';
-import 'package:crypto_base/repository/notice_repository/model/notice.dart';
+import 'package:crypto_base/repository/notice_repository/model/highlight.dart';
 import 'package:crypto_base/support/util/FadeInRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -7,29 +7,23 @@ import 'page_transformer.dart';
 
 class IntroNews {
   IntroNews(this.title,
-      this.category,
       this.imageUrl,
       this.description,
       this.date,
-      this.link,
-      this.origin);
+      this.link);
 
   final String title;
-  final String category;
   final String imageUrl;
   final String date;
   final String description;
   final String link;
-  final String origin;
 
-  IntroNews.fromNotice(Notice notice) :
+  IntroNews.fromNotice(Highlight notice) :
         title = notice.title,
-        category = notice.category,
-        imageUrl = notice.img,
+        imageUrl = notice.thumbnail,
         description = notice.description,
-        date = notice.date,
-        link = notice.link,
-        origin = notice.origin;
+        date = notice.publishedAt,
+        link = notice.url;
 }
 
 class IntroNewsItem extends StatelessWidget {
@@ -66,7 +60,7 @@ class IntroNewsItem extends StatelessWidget {
     final categoryText = _applyTextEffects(
       translationFactor: 300.0,
       child: new Text(
-        item.category,
+        item.title,
         style: textTheme.caption.copyWith(
           color: Colors.white70,
           fontWeight: FontWeight.bold,
@@ -205,8 +199,8 @@ class IntroNewsItem extends StatelessWidget {
             item.title,
             item.date,
             item.description,
-            item.category,
-            item.link,
-            item.origin)));
+            item.title,
+            item.title,
+            item.title)));
   }
 }

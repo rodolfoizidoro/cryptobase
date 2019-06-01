@@ -16,7 +16,7 @@ class Api{
 
     try{
 
-      http.Response response = await http.get(urlBase+uri, headers: headers);
+      http.Response response = await http.get(uri, headers: {});
 
       final statusCode = response.statusCode;
       final String jsonBody = response.body;
