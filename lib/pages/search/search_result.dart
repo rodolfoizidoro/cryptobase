@@ -2,7 +2,6 @@ import 'package:crypto_base/pages/search/search_events.dart';
 import 'package:crypto_base/pages/search/search_result_bloc.dart';
 import 'package:crypto_base/pages/search/search_streams.dart';
 import 'package:crypto_base/repository/notice_repository/model/news.dart';
-import 'package:crypto_base/repository/notice_repository/model/notice.dart';
 import 'package:crypto_base/support/util/StringsLocation.dart';
 import 'package:crypto_base/widgets/AnimatedContent.dart';
 import 'package:crypto_base/widgets/erro_conection.dart';

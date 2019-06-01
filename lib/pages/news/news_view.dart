@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:crypto_base/pages/news/news_bloc.dart';
 import 'package:crypto_base/pages/news/news_events.dart';
 import 'package:crypto_base/pages/news/news_streams.dart';
-import 'package:crypto_base/repository/notice_repository/model/notice.dart';
+import 'package:crypto_base/repository/notice_repository/model/news.dart';
 import 'package:crypto_base/widgets/AnimatedContent.dart';
 import 'package:crypto_base/widgets/custom_tab.dart';
 import 'package:crypto_base/widgets/erro_conection.dart';
@@ -45,7 +45,7 @@ class NewsView extends BlocStatelessView<NewsBloc,NewsStreams> {
     return Container(
       child: StreamBuilder(
           stream: streams.news.get,
-          initialData: List<Notice>(),
+          initialData: List<News>(),
           builder: (_, AsyncSnapshot snapshot) {
 
             if(snapshot.hasData){

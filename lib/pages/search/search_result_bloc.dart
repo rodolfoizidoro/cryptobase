@@ -2,9 +2,7 @@
 import 'package:crypto_base/pages/search/search_events.dart';
 import 'package:crypto_base/pages/search/search_streams.dart';
 import 'package:crypto_base/repository/notice_repository/model/news.dart';
-import 'package:crypto_base/repository/notice_repository/model/notice.dart';
 import 'package:crypto_base/repository/notice_repository/news_repository.dart';
-import 'package:crypto_base/repository/notice_repository/notice_repository.dart';
 import 'package:crypto_base/support/conection/api.dart';
 import 'package:bsev/bsev.dart';
 
@@ -27,7 +25,7 @@ class SearchBloc extends BlocBase<SearchStreams,SearchEvents>{
 
   _load(String query){
 
-    if(streams.noticies.value != null){
+    if(streams.news.value != null){
       return;
     }
 
