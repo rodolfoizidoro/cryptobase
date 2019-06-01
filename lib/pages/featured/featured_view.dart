@@ -51,7 +51,7 @@ class FeaturedView extends BlocStatelessView<FeaturedBloc,FeaturedStreams> {
 
     return StreamBuilder(
         initialData: List<Notice>(),
-        stream: streams.noticies.get,
+        stream: streams.highlights.get, //my model
         builder: (BuildContext context, AsyncSnapshot snapshot) {
 
           List _destaque = snapshot.data;

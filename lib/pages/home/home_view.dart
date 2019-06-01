@@ -23,9 +23,7 @@ class HomeView extends BlocStatelessView<HomeBloc,HomeStreams> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            new Container(
-              child: new SearchWidget(),
-            ) ,
+            new Container(child: new SearchWidget(),),
             new Expanded(
                 child: _getContent(streams)
             )
@@ -34,7 +32,7 @@ class HomeView extends BlocStatelessView<HomeBloc,HomeStreams> {
       ),
       bottomNavigationBar: new BottomNavigation((index){
         streams.tabPosition.set(index);
-      }), // This trailing comma makes auto-formatting nicer for build methods.
+      }),
     );
   }
 
