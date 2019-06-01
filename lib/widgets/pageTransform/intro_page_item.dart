@@ -20,7 +20,7 @@ class IntroNews {
 
   IntroNews.fromNotice(Highlight notice) :
         title = notice.title,
-        imageUrl = notice.thumbnail,
+        imageUrl = notice.image,
         description = notice.description,
         date = notice.publishedAt,
         link = notice.url;
