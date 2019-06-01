@@ -42,8 +42,9 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
               _getTittle(),
               _getContent(getString("text_info")),
               _getContentSecond("Framework","flutter.io","https://flutter.io/"),
-              _getContentSecond("Repository","flutter_news","https://github.com/RafaelBarbosatec/flutter_news"),
-              _getContentSecond("Developer","RafaelBarbosaTec","http://rafaelbarbosatec.github.io/"),
+              _getContentSecond("Repository","Crypto Base","https://github.com/rodolfoizidoro/cryptobase"),
+              _getContentSecond("Developer","Lucas Pedrazoli","https://github.com/lucaspedrazoli"),
+              _getContentSecond("Developer","Rodolfo Izidoro","https://github.com/rodolfoizidoro"),
 
             ],
           ),
@@ -55,7 +56,7 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
 
   Widget _getTittle() {
     return Center(
-      child: new Text("FlutterNews",
+      child: new Text("CryptoNinja",
         style: new TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.blue,
