@@ -81,7 +81,7 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
           new GestureDetector(
             child: new Text(
               tittleLink,
-              style: new TextStyle(color: Colors.amber, fontSize: 25.0),
+              style: new TextStyle(color: Colors.deepOrange, fontSize: 25.0),
             ),
             onTap: () {
               _launchURL(link);

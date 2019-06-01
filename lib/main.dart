@@ -26,9 +26,9 @@ class NewsApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'CryptoNinja',
       theme: new ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: Colors.blue,
-          accentColor: Colors.blue,
+          primarySwatch: Colors.deepOrange,
+          primaryColor: Colors.deepOrange,
+          accentColor: Colors.deepOrange,
           brightness: Brightness.light),
       supportedLocales: MyLocalizationsDelegate.supportedLocales(),
       localizationsDelegates: [
