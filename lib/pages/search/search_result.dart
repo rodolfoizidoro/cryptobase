@@ -1,6 +1,7 @@
 import 'package:crypto_base/pages/search/search_events.dart';
 import 'package:crypto_base/pages/search/search_result_bloc.dart';
 import 'package:crypto_base/pages/search/search_streams.dart';
+import 'package:crypto_base/repository/notice_repository/model/news.dart';
 import 'package:crypto_base/repository/notice_repository/model/notice.dart';
 import 'package:crypto_base/support/util/StringsLocation.dart';
 import 'package:crypto_base/widgets/AnimatedContent.dart';
@@ -36,8 +37,8 @@ class SearchView extends BlocStatelessView<SearchBloc,SearchStreams> {
 
   Widget _getListViewWidget(SearchStreams streams) {
     return StreamBuilder(
-        initialData: List<Notice>(),
-        stream: streams.noticies.get,
+        initialData: List<News>(),
+        stream: streams.news.get,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
 
           if(snapshot.hasData){
