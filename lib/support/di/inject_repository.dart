@@ -7,10 +7,16 @@ import 'package:bsev/flavors.dart';
 injectRepository(Injector injector) {
   injector.registerSingleton((i) {
     Api _api;
-    switch(Flavors().getFlavor()) {
-      case Flavor.PROD: _api = Api("http://104.131.18.84");break;
-      case Flavor.HOMOLOG: _api = Api("");break;
-      case Flavor.DEBUG: _api = Api("");break;
+    switch (Flavors().getFlavor()) {
+      case Flavor.PROD:
+        _api = Api("");
+        break;
+      case Flavor.HOMOLOG:
+        _api = Api("");
+        break;
+      case Flavor.DEBUG:
+        _api = Api("");
+        break;
     }
     return _api;
   });

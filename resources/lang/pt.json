@@ -2,7 +2,7 @@
   "tab_recentes":"Recentes",
   "tab_noticias":"Notícias",
   "tab_sobre":"Sobre",
-  "hint_busca":"Busque sua noticia aqui",
+  "hint_busca":"Busque sua criptomoeda aqui",
   "text_error":"Erro de conexão",
   "text_tentar_novamente":"TENTAR NOVAMENTE",
   "cat_geral":"Geral",
@@ -17,7 +17,7 @@
   "category_ltc":"Litecoin",
   "category_dash":"Dash",
   "category_iota":"Iota",
-  "erro_busca":"Nenhuma noticia encontrada :-(",
+  "erro_busca":"Nenhuma noticia cripto encontrada :-(",
   "text_info":"Aplicação desenvolvida no Hackton Flutter!",
   "text_copy":"Link Copiado.",
   "text_fechar":"Fechar."

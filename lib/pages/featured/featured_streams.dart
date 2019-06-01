@@ -1,8 +1,7 @@
 import 'package:crypto_base/repository/notice_repository/model/highlight.dart';
 import 'package:bsev/bsev.dart';
 
-class FeaturedStreams implements StreamsBase{
-
+class FeaturedStreams implements StreamsBase {
   BehaviorSubjectCreate<bool> progress = BehaviorSubjectCreate();
   BehaviorSubjectCreate<bool> errorConnection = BehaviorSubjectCreate();
   BehaviorSubjectCreate<List<Highlight>> highlights = BehaviorSubjectCreate();
@@ -13,5 +12,4 @@ class FeaturedStreams implements StreamsBase{
     errorConnection.close();
     highlights.close();
   }
-
 }

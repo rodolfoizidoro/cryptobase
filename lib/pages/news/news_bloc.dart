@@ -104,7 +104,7 @@ class NewsBloc extends BlocBase<NewsStreams, NewsEvents> {
       _newsInner = news;
     }
 
-     streams.news.set(_newsInner);
+    streams.news.set(_newsInner);
 
     _carregando = false;
   }

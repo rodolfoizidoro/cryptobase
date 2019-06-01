@@ -9,11 +9,9 @@ import 'package:crypto_base/widgets/erro_conection.dart';
 import 'package:flutter/material.dart';
 import 'package:bsev/bsev.dart';
 
-class NewsView extends BlocStatelessView<NewsBloc,NewsStreams> {
-
+class NewsView extends BlocStatelessView<NewsBloc, NewsStreams> {
   @override
   Widget buildView(BuildContext context, NewsStreams streams) {
-
     return new Container(
         padding: EdgeInsets.only(top: 2.0),
         child: new Stack(
@@ -47,25 +45,19 @@ class NewsView extends BlocStatelessView<NewsBloc,NewsStreams> {
           stream: streams.news.get,
           initialData: List<News>(),
           builder: (_, AsyncSnapshot snapshot) {
-
-            if(snapshot.hasData){
-
+            if (snapshot.hasData) {
               List news = snapshot.data;
 
               ListView listView = new ListView.builder(
                   itemCount: news.length,
                   padding: new EdgeInsets.only(top: 5.0),
                   itemBuilder: (context, index) {
-
                     if (index == 0) {
-
                       return Container(
                         margin: EdgeInsets.only(top: 50.0),
                         child: news[index],
                       );
-
                     } else {
-
                       if (index + 1 >= news.length) {
                         dispatch(LoadMoreNews());
                       }
@@ -78,15 +70,10 @@ class NewsView extends BlocStatelessView<NewsBloc,NewsStreams> {
                 show: news.length > 0,
                 child: RefreshIndicator(onRefresh: myRefresh, child: listView),
               );
-
-            }else{
-
+            } else {
               return Container();
-
             }
-
-          }
-          ),
+          }),
     );
   }
 
@@ -108,9 +95,8 @@ class NewsView extends BlocStatelessView<NewsBloc,NewsStreams> {
   Widget _getListCategory(NewsStreams streams) {
     return StreamBuilder(
       stream: streams.categoriesName.get,
-      builder: (_,snapshot){
-
-        if(snapshot.hasData){
+      builder: (_, snapshot) {
+        if (snapshot.hasData) {
           List<String> list = snapshot.data;
           return AnimatedOpacity(
             opacity: 1,
@@ -122,16 +108,14 @@ class NewsView extends BlocStatelessView<NewsBloc,NewsStreams> {
               },
             ),
           );
-        }else{
+        } else {
           return AnimatedOpacity(
             opacity: 0,
             duration: Duration(milliseconds: 300),
           );
         }
-
       },
     );
-
   }
 
   Future<Null> myRefresh() async {
@@ -139,8 +123,5 @@ class NewsView extends BlocStatelessView<NewsBloc,NewsStreams> {
   }
 
   @override
-  void eventReceiver(EventsBase event) {
-
-  }
-
+  void eventReceiver(EventsBase event) {}
 }

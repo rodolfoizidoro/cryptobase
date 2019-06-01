@@ -8,50 +8,49 @@ import 'package:crypto_base/widgets/search.dart';
 import 'package:bsev/bsev.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends BlocStatelessView<HomeBloc,HomeStreams> {
-
+class HomeView extends BlocStatelessView<HomeBloc, HomeStreams> {
   @override
-  void eventReceiver(EventsBase event) {
-  }
+  void eventReceiver(EventsBase event) {}
 
   @override
   Widget buildView(BuildContext context, HomeStreams streams) {
     return new Scaffold(
       body: new Container(
         color: Colors.grey[200],
-        child:  new Column(
+        child: new Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            new Container(child: new SearchWidget(),),
-            new Expanded(
-                child: _getContent(streams)
-            )
+            new Container(
+              child: new SearchWidget(),
+            ),
+            new Expanded(child: _getContent(streams))
           ],
         ),
       ),
-      bottomNavigationBar: new BottomNavigation((index){
+      bottomNavigationBar: new BottomNavigation((index) {
         streams.tabPosition.set(index);
       }),
     );
   }
 
-  Widget _getContent(HomeStreams streams){
+  Widget _getContent(HomeStreams streams) {
     return StreamBuilder(
         stream: streams.tabPosition.get,
         initialData: 0,
-        builder:  (BuildContext context, AsyncSnapshot snapshot){
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          var position = snapshot.hasData ? snapshot.data : 0;
 
-          var position = snapshot.hasData ? snapshot.data:0;
-
-          switch(position){
-            case 0:return FeaturedView().create();break;
-            case 1: return NewsView().create();break;
-            case 2: return Info();
+          switch (position) {
+            case 0:
+              return FeaturedView().create();
+              break;
+            case 1:
+              return NewsView().create();
+              break;
+            case 2:
+              return Info();
           }
-
-        }
-    );
+        });
   }
-
 }

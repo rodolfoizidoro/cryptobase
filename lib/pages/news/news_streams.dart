@@ -1,9 +1,7 @@
-
 import 'package:crypto_base/repository/notice_repository/model/news.dart';
 import 'package:bsev/bsev.dart';
 
-class NewsStreams implements StreamsBase{
-
+class NewsStreams implements StreamsBase {
   BehaviorSubjectCreate<bool> errorConection = BehaviorSubjectCreate();
   BehaviorSubjectCreate<bool> progress = BehaviorSubjectCreate();
   BehaviorSubjectCreate<List<News>> news = BehaviorSubjectCreate();
@@ -16,5 +14,4 @@ class NewsStreams implements StreamsBase{
     news.close();
     categoriesName.close();
   }
-
 }

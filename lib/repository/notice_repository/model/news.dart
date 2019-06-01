@@ -1,6 +1,5 @@
-import 'package:crypto_base/support/util/date_util.dart';
-import 'package:crypto_base/support/util/functions.dart';
 import 'package:crypto_base/pages/datail/detail.dart';
+import 'package:crypto_base/support/util/date_util.dart';
 import 'package:flutter/material.dart';
 
 class News extends StatelessWidget {
