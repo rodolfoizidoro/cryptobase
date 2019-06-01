@@ -51,7 +51,24 @@ class NewsBloc extends BlocBase<NewsStreams, NewsEvents> {
     if (event is ClickCategory) {
       _currentCategory = event.data;
       cleanList();
-      _load(false);
+      _loadCategories();
+    }
+  }
+
+  _loadCategories() {
+    if (!_carregando) {
+      _carregando = true;
+
+      streams.errorConection.set(false);
+
+      streams.progress.set(true);
+
+      String category = _categories[_currentCategory];
+
+      repository
+          .loadSearch(category)
+          .then((news) => _showNews(news, false))
+          .catchError(_showImplError);
     }
   }
 
@@ -72,7 +89,7 @@ class NewsBloc extends BlocBase<NewsStreams, NewsEvents> {
       String category = _categories[_currentCategory];
 
       repository
-          .loadNews()
+          .loadSearch(category)
           .then((news) => _showNews(news, isMore))
           .catchError(_showImplError);
     }
@@ -104,6 +121,6 @@ class NewsBloc extends BlocBase<NewsStreams, NewsEvents> {
 
   void cleanList() {
     _newsInner = List();
-    //streams.noticies.set(_newsInner);
+    streams.news.set(_newsInner);
   }
 }
