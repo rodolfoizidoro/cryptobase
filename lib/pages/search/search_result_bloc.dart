@@ -1,14 +1,16 @@
 
 import 'package:crypto_base/pages/search/search_events.dart';
 import 'package:crypto_base/pages/search/search_streams.dart';
+import 'package:crypto_base/repository/notice_repository/model/news.dart';
 import 'package:crypto_base/repository/notice_repository/model/notice.dart';
+import 'package:crypto_base/repository/notice_repository/news_repository.dart';
 import 'package:crypto_base/repository/notice_repository/notice_repository.dart';
 import 'package:crypto_base/support/conection/api.dart';
 import 'package:bsev/bsev.dart';
 
 class SearchBloc extends BlocBase<SearchStreams,SearchEvents>{
 
-  final NoticeRepository repository;
+  final NewsRepository repository;
 
   SearchBloc(this.repository);
 
@@ -38,11 +40,11 @@ class SearchBloc extends BlocBase<SearchStreams,SearchEvents>{
 
   }
 
-  _showNews(List<Notice> news) {
+  _showNews(List<News> news) {
 
     streams..progress.set(false);
     if(news.length > 0) {
-      streams.noticies.set(news);
+      streams.news.set(news);
       dispatchView(InitAnimation());
       streams.empty.set(false);
     }else{
