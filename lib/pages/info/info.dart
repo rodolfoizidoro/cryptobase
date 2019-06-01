@@ -58,9 +58,8 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
     return Center(
       child: new Text("CryptoNinja",
         style: new TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.blue,
-            fontSize: 25.0),
+            color: Colors.black,
+            fontSize: 50.0),
       ),
     );
   }
@@ -71,7 +70,7 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
       margin: new EdgeInsets.only(top: 20.0,bottom: 10.0),
       child: new Text(text,
         textAlign: TextAlign.center,
-//        style: new TextStyle( color: Colors.grey[700]),
+        style: new TextStyle(fontSize: 20.0)
       ),
     );
   }
@@ -82,11 +81,11 @@ class _InfoState extends State<Info> with TickerProviderStateMixin {
       margin: new EdgeInsets.only(top: 10.0),
       child: new Column(
         children: <Widget>[
-          new Text(tittle),
+          new Text(tittle, style: new TextStyle(color: Colors.black, fontSize: 18.0),),
           new GestureDetector(
             child: new Text(
               tittleLink,
-              style: new TextStyle(color: Colors.blue),
+              style: new TextStyle(color: Colors.amber, fontSize: 25.0),
             ),
             onTap: (){
               _launchURL(link);
