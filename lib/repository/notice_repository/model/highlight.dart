@@ -9,18 +9,18 @@ class Highlight extends StatelessWidget{
   var publishedAt;
   var description;
   var url; //detail
-  var thumbnail;
+  var image;
 
   AnimationController animationController;
 
-  Highlight(this.title,this.publishedAt,this.description,this.url,this.thumbnail);
+  Highlight(this.title,this.publishedAt,this.description,this.url,this.image);
 
   Highlight.fromMap(Map<String, dynamic>  map) :
         title = map['title'],
         publishedAt = map['publishedAt'],
         description = map['description'],
         url = map['url'],
-        thumbnail = map['thumbnail'];
+        image = map['originalImageUrl'];
 
 
   BuildContext _context;
@@ -49,7 +49,7 @@ class Highlight extends StatelessWidget{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Hero(
-            tag: title, child: _getImgWidget(Functions.getImgResizeUrl(thumbnail, 200, 200)),
+            tag: title, child: _getImgWidget(Functions.getImgResizeUrl(image, 200, 200)),
           ),
           _getColumText(title,publishedAt,description)
         ],
