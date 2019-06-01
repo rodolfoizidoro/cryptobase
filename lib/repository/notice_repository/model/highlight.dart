@@ -10,18 +10,19 @@ class Highlight extends StatelessWidget{
   var description;
   var url; //detail
   var image;
+  var sourceDomain;
 
   AnimationController animationController;
 
-  Highlight(this.title,this.publishedAt,this.description,this.url,this.image);
+  Highlight(this.title,this.publishedAt,this.description,this.url,this.image, this.sourceDomain);
 
   Highlight.fromMap(Map<String, dynamic>  map) :
         title = map['title'],
         publishedAt = map['publishedAt'],
         description = map['description'],
         url = map['url'],
-        image = map['originalImageUrl'];
-
+        image = map['originalImageUrl'],
+        sourceDomain = map['sourceDomain'];
 
   BuildContext _context;
 
@@ -63,7 +64,7 @@ class Highlight extends StatelessWidget{
 
     Navigator.of(_context).push(
         new MaterialPageRoute(builder: (BuildContext context) {
-          return new DetailPage(title, title, title, title, title, title, title);
+          return new DetailPage(image, title, publishedAt, description, url, publishedAt, sourceDomain);
         }
         )
     );

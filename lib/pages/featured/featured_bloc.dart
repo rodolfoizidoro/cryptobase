@@ -1,7 +1,6 @@
 
 import 'package:crypto_base/pages/featured/featured_events.dart';
 import 'package:crypto_base/pages/featured/featured_streams.dart';
-import 'package:crypto_base/repository/notice_repository/model/notice.dart';
 import 'package:crypto_base/repository/notice_repository/model/highlight.dart';
 import 'package:crypto_base/repository/notice_repository/notice_repository.dart';
 import 'package:crypto_base/support/conection/api.dart';

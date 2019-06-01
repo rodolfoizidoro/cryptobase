@@ -1,6 +1,7 @@
 import 'package:crypto_base/pages/featured/featured_events.dart';
 import 'package:crypto_base/pages/featured/featured_bloc.dart';
 import 'package:crypto_base/pages/featured/featured_streams.dart';
+import 'package:crypto_base/repository/notice_repository/model/highlight.dart';
 import 'package:crypto_base/repository/notice_repository/model/notice.dart';
 import 'package:crypto_base/widgets/erro_conection.dart';
 import 'package:crypto_base/widgets/pageTransform/intro_page_item.dart';
@@ -50,7 +51,7 @@ class FeaturedView extends BlocStatelessView<FeaturedBloc,FeaturedStreams> {
   _buildFeatureds(FeaturedStreams streams) {
 
     return StreamBuilder(
-        initialData: List<Notice>(),
+        initialData: List<Highlight>(),
         stream: streams.highlights.get, //my model
         builder: (BuildContext context, AsyncSnapshot snapshot) {
 
