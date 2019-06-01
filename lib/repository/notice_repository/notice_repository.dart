@@ -1,4 +1,3 @@
-
 import 'package:crypto_base/repository/notice_repository/model/highlight.dart';
 import 'package:crypto_base/support/conection/api.dart';
 
