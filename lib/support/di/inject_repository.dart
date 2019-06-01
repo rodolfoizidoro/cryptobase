@@ -1,12 +1,11 @@
+import 'package:crypto_base/repository/notice_repository/news_repository.dart';
 import 'package:crypto_base/repository/notice_repository/notice_repository.dart';
 import 'package:crypto_base/support/conection/api.dart';
 import 'package:bsev/bsev.dart';
 import 'package:bsev/flavors.dart';
 
-
-injectRepository(Injector injector){
-
-  injector.registerSingleton((i){
+injectRepository(Injector injector) {
+  injector.registerSingleton((i) {
     Api _api;
     switch(Flavors().getFlavor()) {
       case Flavor.PROD: _api = Api("http://104.131.18.84");break;
@@ -16,6 +15,8 @@ injectRepository(Injector injector){
     return _api;
   });
 
-  injector.registerDependency<NoticeRepository>((i)=>NoticeRepositoryImpl(i.getDependency()));
-
+  injector.registerDependency<NoticeRepository>(
+      (i) => NoticeRepositoryImpl(i.getDependency()));
+  injector.registerDependency<NewsRepository>(
+      (i) => NewsRepositoryImpl(i.getDependency()));
 }

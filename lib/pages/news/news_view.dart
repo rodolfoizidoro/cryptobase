@@ -44,7 +44,7 @@ class NewsView extends BlocStatelessView<NewsBloc,NewsStreams> {
   Widget _getListViewWidget(NewsStreams streams) {
     return Container(
       child: StreamBuilder(
-          stream: streams.noticies.get,
+          stream: streams.news.get,
           initialData: List<Notice>(),
           builder: (_, AsyncSnapshot snapshot) {
 

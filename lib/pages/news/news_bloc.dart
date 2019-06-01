@@ -1,30 +1,35 @@
-
+import 'package:bsev/bsev.dart';
 import 'package:crypto_base/pages/news/news_events.dart';
 import 'package:crypto_base/pages/news/news_streams.dart';
-import 'package:crypto_base/repository/notice_repository/model/notice.dart';
-import 'package:crypto_base/repository/notice_repository/notice_repository.dart';
+import 'package:crypto_base/repository/notice_repository/model/news.dart';
+import 'package:crypto_base/repository/notice_repository/news_repository.dart';
 import 'package:crypto_base/support/conection/api.dart';
 import 'package:crypto_base/support/util/StringsLocation.dart';
-import 'package:bsev/bsev.dart';
 
-class NewsBloc extends BlocBase<NewsStreams,NewsEvents>{
-
-  final NoticeRepository repository;
+class NewsBloc extends BlocBase<NewsStreams, NewsEvents> {
+  final NewsRepository repository;
 
   int _page = 0;
   int _currentCategory = 0;
-  List<String> _categories = ['geral','sports','technology','entertainment','health','business'];
+  List<String> _categories = [
+    'bitcoin',
+    'ethereum',
+    'ripple',
+    'litecoin',
+    'dash',
+    'iota'
+  ];
   List<String> _categoriesNames = List();
-  List<Notice> _newsInner = List();
+  List<News> _newsInner = List();
   bool _carregando = false;
 
-  NewsBloc(this.repository){
-    _categoriesNames.add(getString("cat_geral"));
-    _categoriesNames.add(getString("cat_esporte"));
-    _categoriesNames.add(getString("cat_tecnologia"));
-    _categoriesNames.add(getString("cat_entretenimento"));
-    _categoriesNames.add(getString("cat_saude"));
-    _categoriesNames.add(getString("cat_negocios"));
+  NewsBloc(this.repository) {
+    _categoriesNames.add(getString("category_btc"));
+    _categoriesNames.add(getString("category_eth"));
+    _categoriesNames.add(getString("category_xrp"));
+    _categoriesNames.add(getString("category_ltc"));
+    _categoriesNames.add(getString("category_dash"));
+    _categoriesNames.add(getString("category_iota"));
   }
 
   @override
@@ -35,32 +40,28 @@ class NewsBloc extends BlocBase<NewsStreams,NewsEvents>{
 
   @override
   void eventReceiver(event) {
-
-    if(event is LoadNews){
+    if (event is LoadNews) {
       _load(false);
     }
 
-    if(event is LoadMoreNews){
+    if (event is LoadMoreNews) {
       _load(true);
     }
 
-    if(event is ClickCategory){
+    if (event is ClickCategory) {
       _currentCategory = event.data;
       cleanList();
       _load(false);
     }
-
   }
 
-  _load(bool isMore){
-
-    if(!_carregando){
-
+  _load(bool isMore) {
+    if (!_carregando) {
       _carregando = true;
 
-      if(isMore){
+      if (isMore) {
         _page++;
-      }else{
+      } else {
         _page = 0;
       }
 
@@ -70,33 +71,30 @@ class NewsBloc extends BlocBase<NewsStreams,NewsEvents>{
 
       String category = _categories[_currentCategory];
 
-      repository.loadNews(category, _page)
-          .then((news) => _showNews(news,isMore))
+      repository
+          .loadNews()
+          .then((news) => _showNews(news, isMore))
           .catchError(_showImplError);
-
     }
-
   }
 
-  _showNews(List<Notice> news, bool isMore) {
-
+  _showNews(List<News> news, bool isMore) {
     streams.progress.set(false);
 
-    if(isMore){
+    if (isMore) {
       _newsInner.addAll(news);
-    }else{
+    } else {
       _newsInner = news;
     }
 
-    streams.noticies.set(_newsInner);
+     streams.news.set(_newsInner);
 
     _carregando = false;
-
   }
 
   _showImplError(onError) {
     print(onError);
-    if(onError is FetchDataException){
+    if (onError is FetchDataException) {
       print("codigo: ${onError.code()}");
     }
     streams.errorConection.set(true);
@@ -106,7 +104,6 @@ class NewsBloc extends BlocBase<NewsStreams,NewsEvents>{
 
   void cleanList() {
     _newsInner = List();
-    streams.noticies.set(_newsInner);
+    //streams.noticies.set(_newsInner);
   }
-
 }

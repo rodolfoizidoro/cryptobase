@@ -24,7 +24,7 @@ class NewsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter News',
+      title: 'Crypto Base Ninja',
       theme: new ThemeData(
           primarySwatch: Colors.blue,
           primaryColor: Colors.blue,
