@@ -31,7 +31,7 @@ class HomeView extends BlocStatelessView<HomeBloc,HomeStreams> {
       ),
       bottomNavigationBar: new BottomNavigation((index){
         streams.tabPosition.set(index);
-      }), // This trailing comma makes auto-formatting nicer for build methods.
+      }),
     );
   }
 
